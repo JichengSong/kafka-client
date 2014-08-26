@@ -1,0 +1,51 @@
+###########################################################
+#         comment center kafka configuration              #
+# author: yueqiang.zheng                                   #
+# created time: 2014-08-07                                #
+###########################################################
+
+
+############################## Common Config #############################
+
+# alarm config
+#####################alarm phones number config
+mail.alerm.phoneList=18698054112
+#####################alarm emails  config
+mail.smtp.user=tjuxiaoqiang@163.com
+mail.smtp.password=shanglin1212
+mail.smtp.host=smtp.163.com
+mail.smtp.auth=true
+
+mail.alerm.emailList=yueqiang.zheng@renren-inc.com,bin.zhang1@renren-inc.com
+
+##################zk config
+#zk.connect=10.4.25.114:2181
+#zk.connect=userzookeeper1.d.xiaonei.com:2181,userzookeeper2.d.xiaonei.com:2181,userzookeeper3.d.xiaonei.com:2181,userzookeeper4.d.xiaonei.com:2181,userzookeeper5.d.xiaonei.com:2181/commentKafka
+zk.connect=10.3.16.225:2181,10.3.16.224:2181,10.3.24.30:2181/kafka/test
+zk.connectiontimeout.ms=1000000
+zk.synctime.ms=200
+auto.commit.enable=true
+auto.commit.interval.ms=10000
+
+
+############################# Consumer Config #############################
+#consumer.buffer.size=65536
+#consumer.fetch.message.size=10240
+
+
+########################### Producer Config #############################
+#partitioner.class=com.renren.ad.infra.producer.InfraKafkaPartition
+partitioner.class=com.renren.ads.kafka.producer.DefaultPartition
+producer.type=async
+compression.codec=0
+serializer.class=kafka.serializer.DefaultEncoder
+queue.time=1000
+queue.size=1000
+batch.size=200
+
+
+########################## fail file #######################################
+send.fail.message.file=/data/addmp/logs/kafkalogs/faillog
+
+
+
